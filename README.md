@@ -35,7 +35,7 @@ python main.py
 ```
 
 
-#Test with postman:
+## Test with postman:
 GET http://localhost:8000/authenticated_sanitized_magic/first
  
 
@@ -43,7 +43,7 @@ GET http://localhost:8000/authenticated_sanitized_magic/second
 
 
 
-# Basic flow of the code:
+## Basic flow of the code:
 1.	Each request will be checked for rate limiting. If client send passes limit an exception with http status code 429 will be send back.
  
 2.	Each request will be required to authenticate. If client did not provided a valid Bearer Token, an errod with http status code 403 will returned
