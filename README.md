@@ -13,19 +13,26 @@ Overview of Request Flow
 
 ## Create virtual env and activate:
 
+```bash 
 python -m venv venv
 venv\scripts\activate
+```
 
 
 ## Install requirements:
+```bash
 pip install -r req.txt
+```
 
 ## Build and run redis container
+```bash 
 docker-compose up -d --build
-
+```
  
 ## Run main app:
+```bash
 python main.py
+```
 
 
 #Test with postman:
@@ -42,12 +49,15 @@ GET http://localhost:8000/authenticated_sanitized_magic/second
 2.	Each request will be required to authenticate. If client did not provided a valid Bearer Token, an errod with http status code 403 will returned
  
 3.	If token is provided, token will be verified. If token is invalid 401 will be returned.
- if not token.credentials == "123456789":        
+
+```python
+   if not token.credentials == "123456789":        
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Unauthorized",
             headers={"WWW-Authenticate": token.scheme},
         )
+```
 
 4.	If request authenticated. File name will be extracted from the URL as string with file_name variable name.
 /authenticated_sanitized_magic/{file_name}
